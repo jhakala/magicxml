@@ -5,6 +5,7 @@ from magicXMLutils import *
 
 # This class is a special implementation of a CfgBrick that specializes it to parsing LED amplitude cfgBricks
 # TODO a class like this will be needed for each kind of magicXML
+# John Hakala 8/18/17
 class CfgBrickLEDamp(CfgBrick):
   def __init__(self, inFileName, rbx):
     info("Parsing magic xml {} of type: LED amplitudes".format(inFileName))
@@ -54,7 +55,6 @@ class CfgBrickLEDamp(CfgBrick):
 
   def endDocument(self):
     from john_emapParser import emapper
-    # TODO make this settable via argument
     emap = emapper("HCALmapHBHElegacy_J.txt")
     emap.parseEmap()
 

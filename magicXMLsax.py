@@ -2,9 +2,9 @@ from xml.sax import saxutils, handler, make_parser
 from os import path, makedirs
 from magicXMLutils import error, info
 
+# base class for defining the parser for any kind of magic xml
 # John Hakala 8/10/17
 
-# base class for defining the parser for any kind of magic xml
 class CfgBrick():
   def __init__(self):
     self.rbx = "test"
@@ -41,7 +41,6 @@ class CfgBrick():
     pass
 
   def formatJson(self, keepKey, emap, outFileName):
-    #keepKeys = ["eta", "phi", "depth", keepKey]
     keepKeys = ["side", "eta", "phi", "depth", keepKey]
     for channel in emap:
       for key in channel.keys():
@@ -50,7 +49,6 @@ class CfgBrick():
         #else:
 
     import json
-    # TODO make this configurable
     outputDir = "../../html/jhakala/outputJSONs"
     if not (path.exists(outputDir)):
       makedirs(outputDir)
@@ -122,7 +120,6 @@ class magicSAX(handler.ContentHandler):
     if self.brick.tmpKind == "TAG" :
       #info("found parameter with name 'TAG'; building ZST cfgBrick.")
       if not self.initialized:
-        #info("debug debug")
         self.CfgBrickFactory("ZST")
         self.initialized = True
         self.brick.initialized = True

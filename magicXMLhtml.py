@@ -1,3 +1,5 @@
+# creates html with the necessary stuff for rendering vega plots
+# John Hakala 8/18/17
 def printHeader():
   print '''<!DOCTYPE html>
 <head>

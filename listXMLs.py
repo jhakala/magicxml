@@ -4,9 +4,12 @@ import cgitb; cgitb.enable()  # for troubleshooting
 from os import listdir
 from xmlListHtml import *
 
+# Generates the listing for a given kind of magic xml
+# It looks at the directory where that kind of magicxml lives
 # John Hakala, 8/17/17
 
 def getDetails(xmlType):
+  # define the different directories of magic xmls, their types, and a title for them
   nameFilter = ""
   if xmlType == "ngDelays":
     title = "ngHEP17 RBX delays"
@@ -24,12 +27,14 @@ def getDetails(xmlType):
   return title, directory, nameFilter
 
 def makeRadio(inputName, which):
+  # creates the radio buttons for each magic xml with the proper form names for diff or single mode
   if which in ["singleInput", "newDiffInput", "oldDiffInput"]:
     return "\n        <input type='radio' name='{1}' value='{0}'> {0}  <br>".format(inputName, which)
   else:
     exit(1)
 
 def makeRadios(title, directory, which, nameFilter):
+   # puts together all the radiobuttons
    singleButtons = ""
    title = "<h3> {} </h3>".format(title)
    options = listdir(directory)
@@ -39,6 +44,7 @@ def makeRadios(title, directory, which, nameFilter):
    return singleButtons
 
 def makeSingleButtons(xmlType):
+  # formats the radio buttons for the single mode menu
   which = "singleInput"
   title, directory, nameFilter = getDetails(xmlType)
   singleButtons = makeRadios("visualize " + title, directory, which, nameFilter)
@@ -52,6 +58,7 @@ def makeSingleButtons(xmlType):
     </form>'''.format(title, singleButtons)
 
 def makeDiffButtons(xmlType):
+  # formats the radio buttons for the diff mode menu
   title, directory, nameFilter = getDetails(xmlType)
   newDiffButtons = makeRadios(title, directory, "newDiffInput", nameFilter)
   oldDiffButtons = makeRadios(title, directory, "oldDiffInput", nameFilter)
@@ -65,6 +72,7 @@ def makeDiffButtons(xmlType):
     </form>'''.format("diff " + title, newDiffButtons, oldDiffButtons)
 
 def getBody(xmlType, mode):
+  # puts together the main chunk of the html
   body = getHeader()
   body +=  "    <!-- begin body -->\n"
   if not xmlType in ["ngDelays", "ZSTs", "LEDamps"]:

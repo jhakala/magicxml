@@ -1,5 +1,6 @@
-# helper functions to spit out chunks of html for viewLogs.py
-# John Hakala 3/2/2017
+# helper functions to spit out chunks of html for listXMLs.py
+# modified from webHandsaw code 
+# John Hakala 3/2/2017, 8/18/17
 
 def getHeader():
   header = """

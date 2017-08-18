@@ -7,6 +7,9 @@ from magicXMLsax import makeJSON
 from magicXMLutils import *
 from magicXMLhtml import *
 
+# Make visualizations of magic XML parameters
+# parses xml, matches with the emap, converts into JSON, and then renders into Vega with Altair
+# The actual rendering of the graphics happens in the client's browser
 # John Hakala 8/16/17
 
 # taken from https://altair-viz.github.io/recipes.html#plot-recipes/population
@@ -100,6 +103,8 @@ def altairify(mode, args):
       info("making visualization of " + inFileName)
       plotName = fullOutJSONnames[0]
   
+    # the dict may reverse old and new in order, so this fixes that
+    # TODO check if reversal works for directories of xmls
     elif mode == "diff":
       if (path.basename(args['old']).replace(".xml", "") in fullOutJSONnames[1]):
         fullOutJSONnames.reverse()

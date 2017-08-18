@@ -5,6 +5,7 @@ from magicXMLutils import *
 
 # This class is a special implementation of a CfgBrick that specializes it to parsing RBX delay cfgBricks
 # TODO a class like this will be needed for each kind of magicXML
+# John Hakala 8/18/17
 class CfgBrickDelay(CfgBrick):
   def __init__(self, inFileName):
     info("Parsing magic xml {} of type: ngRBX Delays".format(inFileName))
@@ -48,7 +49,6 @@ class CfgBrickDelay(CfgBrick):
 
   def endDocument(self):
     from john_emapParser import emapper
-    # TODO make this settable via argument
     emap = emapper("HCALmapHBHEP17_J.txt")
     emap.parseEmap()
 

@@ -4,6 +4,10 @@ import cgi
 import cgitb; cgitb.enable()  # for troubleshooting
 from magicXMLhtml import *
 
+# cgi interface for makePage.py
+# parses the form from apache, and hands back the proper html
+# John Hakala 8/18/17
+
 print "Content-type: text/html\n\n";
 form = cgi.FieldStorage()
 inPlot =  form.getvalue('inPlot')

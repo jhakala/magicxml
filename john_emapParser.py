@@ -1,5 +1,8 @@
 from pprint import pprint
 
+# parses the emap textfiles using dicts
+# John Hakala 8/18/17
+
 class emapper:
   def __init__(self, inFileName):
     self.inFileName = inFileName
