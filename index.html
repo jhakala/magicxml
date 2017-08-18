@@ -1,0 +1,35 @@
+<html>
+  <!-- 
+    request page for webHandsaw
+    this page is where a user fills
+    out the form that gets submitted to logViewer.py 
+    if you have any problems with this page, please email
+    john_hakala@brown.edu or ka_hei_martin_kwok@brown.edu
+    John Hakala 3/2/2017                                   
+   -->
+  <head>
+     <title>webHandsaw -- HCAL logs</title>
+     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700" rel="stylesheet" type="text/css">
+     <link rel="stylesheet" type="text/css" href="/webHandsaw_beta/webHandsaw.css"> 
+     <!--<link rel="icon" type="image/png" href="webHandsaw_black.png">-->
+  </head>
+  <body>
+    <div id="top"><!--<img src="webHandsaw.png" width="50px">--><h1>magic XML visualizer</h1></div>
+    <div id="wrapper">
+      Navigation page for magicXML visualization.
+      <br><br>
+      <form action="/cgi-bin/jhakala/listXMLs.py" type="submit" method="get">
+        Kind of magicXML to visualize:
+        <br>
+        <tt>
+          <input type="radio" name="xmlType" value="ngDelays" required> ngHE RBX delays<br>
+          <input type="radio" name="xmlType" value="ZSTs"> uHTR zero suppression thresholds (phase 0)<br>
+          <input type="radio" name="xmlType" value="LEDamps"> LED amplitudes (phase 0)
+        </tt>
+        <table><tbody><tr><td> mode: </td><td><input type="radio" name="mode" value="single" required> single</td><td><input type="radio" name="mode" value="diff"> diff</td></tr></tbody></table>
+        <br><br>
+        <input type="submit">
+      </form>
+    </div>
+  </body>
+</html>
